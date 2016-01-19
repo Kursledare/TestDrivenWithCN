@@ -4,9 +4,9 @@ namespace MartialArtsLegends
 {
     public class RealTarget : ITarget
     {
-        public RealTarget(Int32 originalHitpoints)
+        public RealTarget(Int32 originalHitPoints)
         {
-            HitPoints = originalHitpoints;
+            HitPoints = originalHitPoints;
         }
 
         public Int32 HitPoints { get; private set; }

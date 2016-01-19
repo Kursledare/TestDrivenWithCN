@@ -1,38 +1,24 @@
 ﻿using System;
 using MartialArtsLegends;
 using NUnit.Framework;
+using Tests.Dummies;
 
 namespace Tests
 {
     [TestFixture]
     public class ChuckNorrisTests
     {
-        public class CrashTestDummy : ITarget
-        {
-            public CrashTestDummy(Int32 hitPoints)
-            {
-                HitPoints = hitPoints;
-            }
-
-            public Int32 HitPoints { get; private set; }
-
-            public void ReduceHitPoints(Int32 hitPoints)
-            {
-                HitPoints -= hitPoints;
-            }
-        }
-
         [Test]
         public void CanKickToReduce10HitPoints()
         {
-            const Int32 originalHitpoints = 10;
+            const Int32 originalHitPoints = 10;
             const Int32 expectedHitPoints = 0;
 
-            ITarget target = new CrashTestDummy(originalHitpoints);
+            ITarget target = new CrashTestDummy(originalHitPoints);
             IKicks chuck = new ChuckNorris();
-            chuck.RounhouseKick(target);
+            chuck.RoundhouseKick(target);
 
-            Assert.That(target.HitPoints, Is.LessThan(originalHitpoints));
+            Assert.That(target.HitPoints, Is.LessThan(originalHitPoints));
             Assert.That(target.HitPoints, Is.EqualTo(expectedHitPoints));
         }
     }

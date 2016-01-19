@@ -5,26 +5,16 @@ using NUnit.Framework;
 namespace Tests
 {
     [TestFixture]
-    class TargetTests
+    public class TargetTests
     {
-
         [Test]
-        public void IsInitializedCorrectly()
+        public void HitPointsCannotFallBelowZero()
         {
-            const Int32 originalHitpoints = 10;
-            ITarget target = new RealTarget(originalHitpoints);
-
-            Assert.That(target.HitPoints, Is.EqualTo(originalHitpoints));
-        }
-
-        [Test]
-        public void HitpoinsCannotFallBelowZero()
-        {
-            const Int32 originalHitpoints = 10;
+            const Int32 originalHitPoints = 10;
             const Int32 damage = 20;
             const Int32 expectedHitPoints = 0;
 
-            ITarget target = new RealTarget(originalHitpoints);
+            ITarget target = new RealTarget(originalHitPoints);
             target.ReduceHitPoints(damage);
 
             Assert.That(target.HitPoints, Is.Not.LessThan(expectedHitPoints));
@@ -43,5 +33,13 @@ namespace Tests
             Assert.That(target.HitPoints, Is.EqualTo(expectedHitPoints));
         }
 
+        [Test]
+        public void IsInitializedCorrectly()
+        {
+            const Int32 originalHitpoints = 10;
+            ITarget target = new RealTarget(originalHitpoints);
+
+            Assert.That(target.HitPoints, Is.EqualTo(originalHitpoints));
+        }
     }
 }
